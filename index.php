@@ -12,37 +12,19 @@
 
 	<div class="row">
 		<div class="large-8 medium-8 columns">
-			<div class="products">
+			<div class="products row">
+			  <?php if(have_posts()) : ?>
+			    <?php while(have_posts()) : the_post(); ?> 
 				<div class="large-4 medium-4 small-12 columns product end">
-					<h3>Blue Shirt</h3>
-					<h4>$9.99</h4>
-					<img src="./img/shirt_blue_white.jpg" alt="">
-					<button class="button">Details</button>
+				  <h3><?php the_title(); ?></h3>
+				  <?php if(has_post_thumbnail()) : ?>
+				    <?php the_post_thumbnail(); ?>  
+				  <?php endif; ?>
+
+				  <a class="button" href="<?php echo the_permalink(); ?>">Details</a>
 				</div>
-				<div class="large-4 medium-4 small-12 columns product end">
-					<h3>Red Shirt</h3>
-					<h4>$9.99</h4>
-					<img src="./img/shirt_red.jpg" alt="">
-					<button class="button">Details</button>
-				</div>
-				<div class="large-4 medium-4 small-12 columns product end">
-					<h3>Grey Shirt</h3>
-					<h4>$9.99</h4>
-					<img src="./img/shirt_grey.jpg" alt="">
-					<button class="button">Details</button>
-				</div>
-				<div class="large-4 medium-4 small-12 columns product end">
-					<h3>Orange Shirt</h3>
-					<h4>$9.99</h4>
-					<img src="./img/shirt_orange.jpg" alt="">
-					<button class="button">Details</button>
-				</div>
-				<div class="large-4 medium-4 small-12 columns product end">
-					<h3>Black Shirt</h3>
-					<h4>$9.99</h4>
-					<img src="./img/shirt_black.jpg" alt="">
-					<button class="button">Details</button>
-				</div>
+			    <?php endwhile; ?>
+			  <?php endif; ?>
 			</div>
 		</div>
 
